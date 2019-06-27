@@ -1,0 +1,29 @@
+sudo: required
+dist: xenial
+language: python
+
+python:
+  - "3.6"
+
+services:
+  - postgresql
+
+env:
+  - CONFIG_FILE=${TRAVIS_BUILD_DIR}/travis_config.yaml
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y graphviz-dev
+
+install:
+  - pip install pipenv
+  - pip install flake8
+  - pipenv lock
+  - pipenv install --system --dev
+
+before_script:
+  - pipenv run src/manage.py migrate
+
+script:
+  - pipenv run src/manage.py test src/
+  - flake8

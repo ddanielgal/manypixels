@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine
+    volumes:
+      - igazhamisch-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    command: python src/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend/src:/code/src
+      - ./frontend/public:/code/public
+      - ./frontend/package.json:/code/package.json
+    ports:
+      - 3000:3000
+  
+  proxy:
+    image: nginx:alpine
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  igazhamisch-data:
+    external: true

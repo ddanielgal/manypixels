@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+pyyaml = ">=4.2b1"
+django-social-authsch = "*"
+pillow = "*"
+
+[dev-packages]
+"flake8" = "*"
+pycodestyle = "*"
+pylint = "*"
+django-extensions = "*"
+psycopg2-binary = "*"
+faker = "*"
+parameterized = "*"
+
+[requires]
+python_version = "3"
