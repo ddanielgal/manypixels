@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:alpine
     volumes:
-      - igazhamisch-data:/var/lib/postgresql/data
+      - manypixels-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
@@ -38,5 +38,5 @@ services:
       - frontend
 
 volumes:
-  igazhamisch-data:
+  manypixels-data:
     external: true

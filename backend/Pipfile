@@ -7,15 +7,14 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 pyyaml = ">=4.2b1"
-django-social-authsch = "*"
 pillow = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 "flake8" = "*"
 pycodestyle = "*"
 pylint = "*"
 django-extensions = "*"
-psycopg2-binary = "*"
 faker = "*"
 parameterized = "*"
 
