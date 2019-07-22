@@ -1,5 +1,5 @@
 """
-WSGI config for igazhamisch project.
+WSGI config for manypixels project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "igazhamisch.settings.local")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "manypixels.settings.local")
 
 application = get_wsgi_application()

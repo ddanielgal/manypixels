@@ -6,9 +6,11 @@ RUN mkdir /code
 ADD . /code
 WORKDIR /code
 
-RUN apk add build-base python-dev py-pip jpeg-dev zlib-dev postgresql-dev musl-dev gcc && \
+RUN apk add --no-cache --virtual .build-deps gcc build-base python3-dev py-pip jpeg-dev zlib-dev musl-dev postgresql-dev && \
     pip install pipenv && \
     pipenv lock && \
-    pipenv install --system --dev
+    pipenv install --system --dev && \
+    apk del --no-cache .build-deps && \
+    apk add libpq
 
 ENTRYPOINT ["sh", "docker-entrypoint.sh"]
