@@ -5,4 +5,5 @@ urlpatterns = [
 
     # Server Side Rendering
     path('admin/', admin.site.urls),
+    path('api/v1/', include('canvas.urls'))
 ]
