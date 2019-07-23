@@ -1,0 +1,8 @@
+debug: True
+database:
+  user: 'postgres'
+  password: ''
+  host: 'db'
+  port: 5432
+  name: 'postgres'
+secret_key: secret

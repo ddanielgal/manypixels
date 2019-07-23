@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-SECRET_KEY = ')h-&lulect)yq7d+4e(!f!5-%60j(70etwbi9^axccq+0is+h-'
+SECRET_KEY = YAML_SETTINGS.get('secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = YAML_SETTINGS.get('debug')
