@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { Grommet } from 'grommet';
+import React, { Component } from 'react'
+import { Grommet } from 'grommet'
+
+import Main from './Main'
 
 
 class App extends Component {
   render() {
     return (
-      <Grommet>
-        Hello
+      <Grommet full>
+        <Main />
       </Grommet>
     );
   }
