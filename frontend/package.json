@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "grommet": "^2.7.4",
+    "pixel-grid-react": "^0.0.4",
     "polished": "^3.4.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
