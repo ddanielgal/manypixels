@@ -7,3 +7,8 @@ class Canvas(models.Model):
     size_x = models.IntegerField()
     size_y = models.IntegerField()
     content = JSONField()
+
+
+class HexCanvas(Canvas):
+    pass
+    
