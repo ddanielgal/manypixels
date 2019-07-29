@@ -26,7 +26,7 @@ class CanvasTestCase(APITestCase):
             'size_x': 10,
             'size_y': 10,
             'name': 'Test1',
-            'content': [[255,255,255] for x in range(0,10*10)]
+            'content': ['#ffffff' for x in range(0,10*10)]
         }
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -52,7 +52,7 @@ class CanvasTestCase(APITestCase):
             'size_x': 1000,
             'size_y': 1000,
             'name': 'Test2',
-            'content': [[255,255,255] for x in range(0,1000*1000)]
+            'content': ['#ffffff' for x in range(0,1000*1000)]
         }
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
