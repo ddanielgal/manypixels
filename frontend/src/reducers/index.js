@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
+import {CanvasReducer} from './CanvasReducer'
+
 const rootReducer = combineReducers({
-  user: [],
+  canvas: CanvasReducer,
 });
 
 export default rootReducer;
