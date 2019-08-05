@@ -15,24 +15,32 @@ class ColorPickerContainer extends Component {
   }
 
   handleChange(color) {
-    console.log('New color:', color);
+    this.props.selectColor(color);
   }
 
   render() {
     return (
-      <Box direction='row' wrap={true}>
-        {this.state.colors.map((color, i) => (
-          <Button plain key={i}
-            style={{ margin: '.5em' }}
-            label={
-              <Box
-                background={color}
-                style={{ width: '4em', height: '4em' }}
-                border={{ color: 'black', size: 'xsmall' }} />
-            }
-            onClick={() => this.handleChange(color)}
-          />
-        ))}
+      <Box direction='column' align='center' gap='medium'>
+        <Box
+          background={this.props.selectedColor}
+          style={{ width: '4em', height: '4em' }}
+          round='large'
+          border={{ color: 'black', size: 'xsmall' }} />
+        <Box direction='row' wrap={true}>
+          {this.state.colors.map((color, i) => (
+            <Button plain key={i}
+              style={{ margin: '.5em' }}
+              label={
+                <Box
+                  background={color}
+                  style={{ width: '4em', height: '4em' }}
+                  border={{ color: 'black', size: 'xsmall' }}
+                />
+              }
+              onClick={() => this.handleChange(color)}
+            />
+          ))}
+        </Box>
       </Box>
     )
   }
