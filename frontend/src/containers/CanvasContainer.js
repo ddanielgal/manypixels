@@ -22,14 +22,18 @@ class CanvasContainer extends Component {
   }
 
   handlePixelClick(x, y) {
-    this.props.changePixelColor(x,y,this.props.selectedColor);
+    this.props.changePixelColor(x, y, this.props.selectedColor);
   }
 
   render() {
     if (!this.props.canvas.name) return <Loading />;
     const grid = this.chunkArrayInGroups(this.props.canvas.content, this.props.canvas.size_x);
     return (
-      <Canvas grid={grid} handlePixelClick={(x,y) => this.handlePixelClick(x,y)} />
+      <Canvas
+        grid={this.props.canvas.content}
+        x={this.props.canvas.size_x}
+        y={this.props.canvas.size_y}
+        handlePixelClick={(x, y) => this.handlePixelClick(x, y)} />
     )
   }
 }

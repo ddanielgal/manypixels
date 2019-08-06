@@ -1,26 +1,27 @@
 import React from 'react'
-import { Box, Button } from 'grommet'
+import { Box, Button, Grid } from 'grommet'
 
 const Canvas = (props) => {
   return (
-    <Box border='all' pad='medium' direction='column'
-      align='center' justify='center'>
-      {props.grid.map((row, y) => (
-        <Box key={y} direction='row'>
-          {row.map((pixel, x) => (
-            <Button plain
-              key={x}
-              label={
-                <Box
-                  background={pixel}
-                  style={{ width: '2em', height: '2em' }}
-                  border={{ size: 'xsmall' }}
-                />}
-              onClick={() => props.handlePixelClick(x, y)} />
-          ))}
-        </Box>
-      ))}
-    </Box>
+    <Grid fill
+      columns={{ count: props.x, size: 'auto' }}
+      rows={{ count: props.y, size: 'auto' }}>
+      {props.grid.map((color, index) => {
+        const y = Math.floor(index / props.x);
+        const x = index - y * props.x;
+        return (
+          <Button plain fill
+            key={index}
+            label={
+              <Box
+                background={color}
+                border={{ size: 'xsmall' }}
+                fill
+              />}
+            onClick={() => props.handlePixelClick(x, y)} />
+        )
+      })}
+    </Grid>
   )
 }
 
