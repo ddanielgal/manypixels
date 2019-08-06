@@ -2,8 +2,8 @@ import React from 'react'
 import { Box, Button } from 'grommet'
 
 const Canvas = (props) => {
-  const biggerSide = props.grid.length > props.grid[0].length ? props.grid.length : props.grid[0].length;
-  const pixelSize = `${70/biggerSide}vmin`;
+  //const biggerSide = props.grid.length > props.grid[0].length ? props.grid.length : props.grid[0].length;
+  const pixelSize = `${70/props.grid.length}vh`;
   console.log(pixelSize);
   return (
     <Box border='all' pad='medium' direction='column'

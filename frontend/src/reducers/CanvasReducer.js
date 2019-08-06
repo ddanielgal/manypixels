@@ -8,14 +8,8 @@ export const CanvasReducer = (state = INITIAL, action) => {
       return { ...state, ...action.payload };
     case CHANGE_PIXEL_COLOR:
       const index = state.size_x * action.payload.y + action.payload.x;
-      return {
-        ...state,
-        content: [
-          ...state.content.slice(0, index),
-          action.payload.newColor,
-          ...state.content.slice(index + 1)
-        ]
-      }
+      state.content[index] = action.payload.newColor;
+      return { ...state };
     default:
       return state;
   }

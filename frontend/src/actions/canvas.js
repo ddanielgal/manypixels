@@ -4,7 +4,7 @@ import axios from './session'
 
 export const getCanvas = () => async (dispatch) => {
   try {
-    let canvas = await axios.get('/api/v1/canvas/1/');
+    let canvas = await axios.get('/api/v1/canvas/7/');
     const { size_x, size_y, name, content } = canvas.data;
     dispatch({
       type: GET_CANVAS,
