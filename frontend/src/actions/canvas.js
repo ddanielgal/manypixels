@@ -1,4 +1,4 @@
-import { GET_CANVAS } from './types'
+import { GET_CANVAS, CHANGE_PIXEL_COLOR } from './types'
 import axios from './session'
 
 
@@ -13,4 +13,11 @@ export const getCanvas = () => async (dispatch) => {
   } catch (e) {
     console.log(e);
   }
+}
+
+export const changePixelColor = (x, y, newColor) => async (dispatch) => {
+  dispatch({
+    type: CHANGE_PIXEL_COLOR,
+    payload: { x, y, newColor },
+  });
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getCanvas } from '../actions';
+import { getCanvas, changePixelColor } from '../actions';
 
 import Loading from '../components/Loading'
 import Canvas from '../components/Canvas'
@@ -22,14 +22,14 @@ class CanvasContainer extends Component {
   }
 
   handlePixelClick(x, y) {
-    console.log(x, y);
+    this.props.changePixelColor(x,y,this.props.selectedColor);
   }
 
   render() {
     if (!this.props.canvas.name) return <Loading />;
     const grid = this.chunkArrayInGroups(this.props.canvas.content, this.props.canvas.size_x);
     return (
-      <Canvas grid={grid} handlePixelClick={this.handlePixelClick} />
+      <Canvas grid={grid} handlePixelClick={(x,y) => this.handlePixelClick(x,y)} />
     )
   }
 }
@@ -38,7 +38,8 @@ class CanvasContainer extends Component {
 const mapStateToProps = state => {
   return {
     canvas: state.canvas,
+    selectedColor: state.colorPicker.selectedColor
   };
 };
 
-export default connect(mapStateToProps, { getCanvas })(CanvasContainer);
+export default connect(mapStateToProps, { getCanvas, changePixelColor })(CanvasContainer);
