@@ -1,17 +1,25 @@
 import React from 'react'
-import { Box, Button, Grid } from 'grommet'
+import { Box, Button } from 'grommet'
 
 const Canvas = (props) => {
-  const pixelSize = '1em';
+  const biggerSide = props.grid.length > props.grid[0].length ? props.grid.length : props.grid[0].length;
+  const pixelSize = `${70/biggerSide}vmin`;
+  console.log(pixelSize);
   return (
-    <Box border='all' pad='medium' direction='column' gap='.1em'
-      align='center' justify='center'>
+    <Box border='all' pad='medium' direction='column'
+      align='center' justify='center' overflow='auto'>
       {props.grid.map((row, y) => (
-        <Box key={y} direction='row' gap='.1em'>
+        <Box key={y} direction='row'>
           {row.map((pixel, x) => (
             <Button plain
               key={x}
-              label={<Box background={pixel} style={{ width: '2em', height: '2em' }} />}
+              label={
+                <Box
+                  background={pixel}
+                  border={{ size: 'xsmall' }}
+                  width={pixelSize}
+                  height={pixelSize} />
+              }
               onClick={() => props.handlePixelClick(x, y)} />
           ))}
         </Box>

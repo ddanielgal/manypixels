@@ -30,9 +30,7 @@ class CanvasContainer extends Component {
     const grid = this.chunkArrayInGroups(this.props.canvas.content, this.props.canvas.size_x);
     return (
       <Canvas
-        grid={this.props.canvas.content}
-        x={this.props.canvas.size_x}
-        y={this.props.canvas.size_y}
+        grid={grid}
         handlePixelClick={(x, y) => this.handlePixelClick(x, y)} />
     )
   }
