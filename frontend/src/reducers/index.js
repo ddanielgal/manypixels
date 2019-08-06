@@ -5,7 +5,7 @@ import { ColorPickerReducer } from './ColorPickerReducer';
 
 const rootReducer = combineReducers({
   canvas: CanvasReducer,
-  selectedColor: ColorPickerReducer
+  colorPicker: ColorPickerReducer
 });
 
 export default rootReducer;
