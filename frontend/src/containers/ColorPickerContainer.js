@@ -23,8 +23,8 @@ class ColorPickerContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    selectedColor: state.colorPicker.selectedColor,
-    colors: state.colorPicker.colors
+    selectedColor: state.color.selectedColor,
+    colors: state.color.colorMap
   };
 };
 

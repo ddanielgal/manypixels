@@ -10,17 +10,17 @@ const ColorPicker = (props) => {
         round='large'
         border={{ color: 'black', size: 'xsmall' }} />
       <Box direction='row' wrap={true}>
-        {props.colors.map((color, i) => (
-          <Button plain key={i}
+        {Object.keys(props.colors).map((colorKey) => (
+          <Button plain key={colorKey}
             style={{ margin: '.1em' }}
             label={
               <Box
-                background={color}
+                background={props.colors[colorKey]}
                 style={{ width: '1em', height: '1em' }}
                 border={{ color: 'black', size: 'xsmall' }}
               />
             }
-            onClick={() => props.handleChange(color)}
+            onClick={() => props.handleChange(props.colors[colorKey])}
           />
         ))}
       </Box>

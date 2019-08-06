@@ -40,7 +40,7 @@ class CanvasContainer extends Component {
 const mapStateToProps = state => {
   return {
     canvas: state.canvas,
-    selectedColor: state.colorPicker.selectedColor
+    selectedColor: state.color.selectedColor
   };
 };
 
