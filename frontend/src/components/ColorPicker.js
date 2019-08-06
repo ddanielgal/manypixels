@@ -3,7 +3,7 @@ import { Box, Button } from 'grommet'
 
 const ColorPicker = (props) => {
   return (
-    <Box direction='column' align='center' gap='medium'>
+    <Box direction='column' align='center' pad='medium' gap='medium' width='small'>
       <Box
         background={props.selectedColor}
         style={{ width: '4em', height: '4em' }}
@@ -12,11 +12,11 @@ const ColorPicker = (props) => {
       <Box direction='row' wrap={true}>
         {props.colors.map((color, i) => (
           <Button plain key={i}
-            style={{ margin: '.5em' }}
+            style={{ margin: '.1em' }}
             label={
               <Box
                 background={color}
-                style={{ width: '4em', height: '4em' }}
+                style={{ width: '1em', height: '1em' }}
                 border={{ color: 'black', size: 'xsmall' }}
               />
             }
