@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Box } from 'grommet'
 
-import { getCanvas, changePixelColor } from '../actions';
-
+import { getCanvas } from '../actions';
 import Loading from '../components/Loading'
-import Canvas from '../components/Canvas'
+import PixelContainer from './PixelContainer'
 
 
 class CanvasContainer extends Component {
@@ -13,25 +13,25 @@ class CanvasContainer extends Component {
     this.props.getCanvas();
   }
 
-  chunkArrayInGroups(arr, size) {
-    var myArray = [];
-    for (var i = 0; i < arr.length; i += size) {
-      myArray.push(arr.slice(i, i + size));
-    }
-    return myArray;
-  }
-
-  handlePixelClick(x, y) {
-    this.props.changePixelColor(x, y, this.props.selectedColor);
-  }
-
   render() {
-    if (!this.props.canvas.name) return <Loading />;
-    const grid = this.chunkArrayInGroups(this.props.canvas.content, this.props.canvas.size_x);
+    if (!this.props.name) return <Loading />;
+    let rows = [];
+    for (let i = 0; i < this.props.y; ++i) {
+      let pixels = [];
+      for (let j = 0; j < this.props.x; ++j) {
+        pixels.push(<PixelContainer x={j} y={i} key={j} />);
+      }
+      rows.push(
+        <Box direction='row' key={i}>
+          {pixels}
+        </Box>
+      );
+    }
     return (
-      <Canvas
-        grid={grid}
-        handlePixelClick={(x, y) => this.handlePixelClick(x, y)} />
+      <Box border='all' pad='medium' direction='column'
+      align='center' justify='center' overflow='auto'>
+        {rows}
+      </Box>
     )
   }
 }
@@ -39,9 +39,10 @@ class CanvasContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    canvas: state.canvas,
-    selectedColor: state.color.selectedColor
+    x: state.canvas.size_x,
+    y: state.canvas.size_y,
+    name: state.canvas.name
   };
 };
 
-export default connect(mapStateToProps, { getCanvas, changePixelColor })(CanvasContainer);
+export default connect(mapStateToProps, { getCanvas })(CanvasContainer);

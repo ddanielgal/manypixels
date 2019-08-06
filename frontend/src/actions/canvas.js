@@ -15,9 +15,9 @@ export const getCanvas = () => async (dispatch) => {
   }
 }
 
-export const changePixelColor = (x, y, newColor) => async (dispatch) => {
+export const changePixelColor = (x, y) => async (dispatch, getState) => {
   dispatch({
     type: CHANGE_PIXEL_COLOR,
-    payload: { x, y, newColor },
+    payload: { x, y, newColor: getState().color.selectedColor },
   });
 }

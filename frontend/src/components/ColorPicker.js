@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button } from 'grommet'
+import { Box, Button, Grid } from 'grommet'
 
 const ColorPicker = (props) => {
   return (
@@ -7,23 +7,24 @@ const ColorPicker = (props) => {
       <Box
         background={props.selectedColor}
         style={{ width: '4em', height: '4em' }}
-        round='large'
-        border={{ color: 'black', size: 'xsmall' }} />
-      <Box direction='row' wrap={true}>
+        round='full'
+        border={{ size: 'xsmall' }} />
+      <Grid
+        fill='horizontal'
+        columns={{ count: 4, size: 'auto' }}>
         {Object.keys(props.colors).map((colorKey) => (
           <Button plain key={colorKey}
-            style={{ margin: '.1em' }}
             label={
-              <Box
+              <Box fill
                 background={props.colors[colorKey]}
-                style={{ width: '1em', height: '1em' }}
-                border={{ color: 'black', size: 'xsmall' }}
+                border={{ size: 'xsmall' }}
+                pad={{ top: '100%' }}
               />
             }
             onClick={() => props.handleChange(props.colors[colorKey])}
           />
         ))}
-      </Box>
+      </Grid>
     </Box>
   )
 }
