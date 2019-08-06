@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { changePixelColor } from '../actions/canvas'
 import Pixel from '../components/Pixel'
 
 
 class CanvasContainer extends Component {
 
   handleClick(x, y) {
-    console.log(x, y);
+    this.props.changePixelColor(x, y);
   }
 
   render() {
@@ -29,4 +30,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { })(CanvasContainer);
+export default connect(mapStateToProps, { changePixelColor })(CanvasContainer);
