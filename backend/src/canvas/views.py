@@ -22,7 +22,7 @@ class CanvasViewSet(
             'size_x': x,
             'size_y': y,
             'name': request.data.get('name'),
-            'content': ['#ffffff' for x in range(0,(x*y))]
+            'content': '0' * x * y
         }
         serializer = CanvasSerializer(data=new_canvas)
         serializer.is_valid()
