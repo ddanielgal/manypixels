@@ -96,3 +96,25 @@ class CanvasTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response_data, expected)
     
+
+    def test_put_pixel(self):
+        Canvas.objects.create(
+            name='Test1',
+            size_x=100,
+            size_y=100,
+            content='0'*100*100
+        )
+        pk = Canvas.objects.all()[0].pk
+        url = '/api/v1/canvas/%d/' % pk
+
+        request_data = {
+            'x': 5,
+            'y': 15,
+            'color': '6'
+        }
+
+        response = self.client.put(url, request_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(Canvas.objects.all()[0].content, '0'*1505 + '6' + '0'*8494)
+    

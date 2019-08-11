@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework import mixins
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from .models import Canvas
 from .serializers import CanvasSerializer
@@ -28,3 +28,17 @@ class CanvasViewSet(
         serializer.is_valid()
         serializer.save()
         return JsonResponse(serializer.data, status=201)
+
+    def update(self, request, *args, **kwargs):
+        x = int(request.data.get('x'))
+        y = int(request.data.get('y'))
+        color = request.data.get('color')
+        instance = self.get_object()
+        old_content = list(instance.content)
+        old_content[y*instance.size_x+x] = color
+        new_content = ''.join(old_content)
+        new_data = { 'content': new_content }
+        serializer = self.get_serializer(instance, new_data, partial=True)
+        serializer.is_valid()
+        serializer.save()
+        return HttpResponse(status=200)
