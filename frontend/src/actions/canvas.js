@@ -1,4 +1,4 @@
-import { GET_CANVAS, CHANGE_PIXEL_COLOR } from './types'
+import { GET_CANVAS, CHANGE_PIXEL_COLOR, FINISHED_PAINTING } from './types'
 import axios from './session'
 
 function getKeyByValue(object, value) {
@@ -28,3 +28,7 @@ export const changePixelColor = (x, y) => async (dispatch, getState) => {
   axios.put('/api/v1/canvas/11/', { x, y, color: newColorChar })
     .catch(error => console.log(error))
 }
+
+export const finishedPainting = () => (
+  { type: FINISHED_PAINTING, payload: 'asd' }
+)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import UserInfo from '../components/UserInfo'
-
+import { finishedPainting } from '../actions'
 
 class UserInfoContainer extends Component {
   render() {
@@ -10,7 +10,8 @@ class UserInfoContainer extends Component {
       <UserInfo
         name={this.props.name}
         pixelsRemaining={this.props.pixelsRemaining}
-        color={this.props.selectedColor} />
+        color={this.props.selectedColor}
+        finishedPainting={this.props.finishedPainting} />
     )
   }
 }
@@ -21,4 +22,4 @@ const mapStateToProps = (state) => ({
   selectedColor: state.color.selectedColor
 })
 
-export default connect(mapStateToProps, {})(UserInfoContainer)
+export default connect(mapStateToProps, { finishedPainting })(UserInfoContainer)

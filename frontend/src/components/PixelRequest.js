@@ -14,7 +14,8 @@ const PixelRequestModal = (props) => {
       {props.displayButton && <Button fill='horizontal'
         label='Kérek még pixeleket!'
         onClick={() => setOpen(true)}
-        color='status-ok' />}
+        color='neutral-1'
+        primary />}
       {open && <Layer
         onEsc={onClose}
         onClickOutside={onClose}>

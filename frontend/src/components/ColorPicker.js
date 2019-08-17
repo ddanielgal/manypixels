@@ -11,7 +11,7 @@ const ColorPicker = (props) => {
         pad='xsmall'
         fill='horizontal'
         direction='row' justify='center'>
-        <Text size='small'>Szín</Text>
+        <Text size='small'>{props.selectedColor}</Text>
       </Box>
       <Grid
         fill='horizontal'

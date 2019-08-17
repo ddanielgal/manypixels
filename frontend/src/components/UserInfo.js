@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text } from 'grommet'
+import { Box, Text, Button } from 'grommet'
 
 
 const UserInfo = (props) => {
@@ -19,6 +19,11 @@ const UserInfo = (props) => {
               </Box>
             </Box>
             <Text textAlign='center'>pixelt lehet elhelyezni</Text>
+            <Button
+              label='Végeztem'
+              primary color='neutral-1'
+              onClick={props.finishedPainting}
+            />
           </Box>
           ) :
           <Text>Elfogytak a pixeleid :(</Text>
