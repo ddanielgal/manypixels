@@ -21,14 +21,15 @@ export const getCanvas = () => async (dispatch) => {
 export const changePixelColor = (x, y) => async (dispatch, getState) => {
   if (getState().userInfo.pixelsRemaining === 0) return
   const newColorChar = getKeyByValue(getState().color.colorMap, getState().color.selectedColor)
+  const userName = getState().userInfo.name
   dispatch({
     type: CHANGE_PIXEL_COLOR,
     payload: { x, y, newColorChar },
   })
-  axios.put('/api/v1/canvas/11/', { x, y, color: newColorChar })
+  axios.put('/api/v1/canvas/11/', { x, y, color: newColorChar, name: userName })
     .catch(error => console.log(error))
 }
 
 export const finishedPainting = () => (
-  { type: FINISHED_PAINTING, payload: 'asd' }
+  { type: FINISHED_PAINTING }
 )

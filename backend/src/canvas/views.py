@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework import mixins
 from django.http import JsonResponse, HttpResponse
 
-from .models import Canvas
+from .models import Canvas, Entry
 from .serializers import CanvasSerializer
 
 
@@ -33,6 +33,7 @@ class CanvasViewSet(
         x = int(request.data.get('x'))
         y = int(request.data.get('y'))
         color = request.data.get('color')
+        name = request.data.get('name')
         instance = self.get_object()
         old_content = list(instance.content)
         old_content[y*instance.size_x+x] = color
@@ -41,4 +42,5 @@ class CanvasViewSet(
         serializer = self.get_serializer(instance, new_data, partial=True)
         serializer.is_valid()
         serializer.save()
+        Entry.objects.create(x=x, y=y, name=name, color=color, canvas=instance)
         return HttpResponse(status=200)
