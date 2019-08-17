@@ -1,17 +1,21 @@
 import React from 'react'
-import { Box, Button, Grid } from 'grommet'
+import { Box, Button, Grid, Text } from 'grommet'
 
 const ColorPicker = (props) => {
   return (
-    <Box direction='column' align='center' pad='medium' gap='medium' width='small'>
+    <Box direction='column' align='center' pad='small' gap='small' width='medium'>
       <Box
         background={props.selectedColor}
-        style={{ width: '4em', height: '4em' }}
-        round='full'
-        border={{ size: 'xsmall' }} />
+        round='medium'
+        border={{ size: 'xsmall' }}
+        pad='xsmall'
+        fill='horizontal'
+        direction='row' justify='center'>
+        <Text size='small'>Szín</Text>
+      </Box>
       <Grid
         fill='horizontal'
-        columns={{ count: 4, size: 'auto' }}>
+        columns={{ count: 16, size: 'auto' }}>
         {Object.keys(props.colors).map((colorKey) => (
           <Button plain key={colorKey}
             label={
