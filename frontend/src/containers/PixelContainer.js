@@ -13,7 +13,6 @@ class PixelContainer extends Component {
 
   render() {
     const color = this.props.colorMap[this.props.colorChar];
-    console.log(color);
     return (
       <Pixel
         color={color}
