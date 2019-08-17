@@ -7,7 +7,7 @@ function getKeyByValue(object, value) {
 
 export const getCanvas = () => async (dispatch) => {
   try {
-    let canvas = await axios.get('/api/v1/canvas/10/')
+    let canvas = await axios.get('/api/v1/canvas/11/')
     const { size_x, size_y, name, content } = canvas.data
     dispatch({
       type: GET_CANVAS,
@@ -19,11 +19,12 @@ export const getCanvas = () => async (dispatch) => {
 }
 
 export const changePixelColor = (x, y) => async (dispatch, getState) => {
+  if (getState().userInfo.pixelsRemaining === 0) return
   const newColorChar = getKeyByValue(getState().color.colorMap, getState().color.selectedColor)
   dispatch({
     type: CHANGE_PIXEL_COLOR,
     payload: { x, y, newColorChar },
   })
-  axios.put('/api/v1/canvas/10/', { x, y, color: newColorChar })
+  axios.put('/api/v1/canvas/11/', { x, y, color: newColorChar })
     .catch(error => console.log(error))
 }

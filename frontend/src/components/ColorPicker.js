@@ -3,7 +3,7 @@ import { Box, Button, Grid, Text } from 'grommet'
 
 const ColorPicker = (props) => {
   return (
-    <Box direction='column' align='center' pad='small' gap='small' width='medium'>
+    <Box direction='column' align='center' pad='small' gap='small' fill='horizontal'>
       <Box
         background={props.selectedColor}
         round='medium'
@@ -15,7 +15,7 @@ const ColorPicker = (props) => {
       </Box>
       <Grid
         fill='horizontal'
-        columns={{ count: 16, size: 'auto' }}>
+        columns={{ count: 8, size: 'auto' }}>
         {Object.keys(props.colors).map((colorKey) => (
           <Button plain key={colorKey}
             label={
